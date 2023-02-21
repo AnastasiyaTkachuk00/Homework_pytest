@@ -1,0 +1,32 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+import pytest
+
+
+@pytest.fixture
+def browser():
+    driver = webdriver.Chrome()
+    yield driver
+    driver.quit()
+
+
+def test_web(browser):
+    chrome = webdriver.Chrome()
+    url = 'https://thedemosite.co.uk/savedata.php'
+    chrome.get(url=url)
+    chrome.maximize_window()
+    username = element1 = chrome.find_element(By.NAME, "username")
+    username.click()
+    username.send_keys('tk_anastasiya')
+    assert username.get_attribute('value') == "tk_anastasiya"
+
+    password = chrome.find_element(By.NAME, "password")
+    password.click()
+    password.send_keys('maliby12')
+    assert password.get_attribute('value') == "maliby12"
+
+    save_button = chrome.find_element(By.NAME, "FormsButton2")
+    save_button.click()
+
+    chrome.close()

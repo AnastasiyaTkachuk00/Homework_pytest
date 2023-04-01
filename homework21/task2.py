@@ -18,7 +18,7 @@ def test_web(browser):
     url = 'https://demoqa.com/text-box'
     chrome.get(url=url)
     chrome.maximize_window()
-    full_name = element1 = chrome.find_element(By.ID, "userName")
+    full_name = chrome.find_element(By.ID, "userName")
     full_name.click()
     full_name.send_keys('tk_anastasiya')
     time.sleep(5)

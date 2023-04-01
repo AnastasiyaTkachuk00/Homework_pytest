@@ -1,7 +1,9 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
-import pytest
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 
 @pytest.fixture
@@ -16,7 +18,7 @@ def test_web(browser):
     url = 'https://thedemosite.co.uk/savedata.php'
     chrome.get(url=url)
     chrome.maximize_window()
-    username = element1 = chrome.find_element(By.NAME, "username")
+    username = chrome.find_element(By.NAME, "username")
     username.click()
     username.send_keys('tk_anastasiya')
     assert username.get_attribute('value') == "tk_anastasiya"

@@ -1,0 +1,50 @@
+from triangle import Triangle
+import pytest
+
+class TestTrianglePtest:
+
+    @pytest.mark.parametrize("a, b, c",
+                             [(7, 8, 9), (9, 7, 8)])
+
+    def setUp(self):
+        self.first = Triangle(7, 8, 9)
+        self.second = Triangle(9, 7, 8)
+
+    def test_triangle_eq():
+        first = Triangle(7, 8, 9)
+        second = Triangle(9, 7, 8)
+        assert first == second
+
+    def test_triangle_lt(self):
+        first = Triangle(7, 8, 9)
+        second = Triangle(9, 7, 8)
+        assert first < second
+
+    @pytest.fixture(params=[(7, 8, 9), (9, 7, 8)])
+    def test_triangle_right(self, right_triangle):
+        assert right_triangle.is_right_triangle()
+
+    def test_triangle_ne(self):
+        first = Triangle(9, 7, 9)
+        second = Triangle(9, 7, 8)
+        assert self.first != second
+
+    def test_triangle_lt(self):
+        self.perimetr = 25
+        assert self.perimetr < 29
+
+    def test_triangle_gt(self):
+        self.perimetr = 25
+        assert self.perimetr > 24
+
+    def test_triangle_le(self):
+        self.perimetr = 25
+        assert self.perimetr <= 25
+
+    def test_triangle_ge(self):
+        self.perimetr = 25
+        assert self.perimetr >= 26
+
+    def test_perimetr(self):
+        self.perimetr = 25
+        assert self.perimetr == 25
